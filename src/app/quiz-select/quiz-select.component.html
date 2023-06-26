@@ -23,11 +23,13 @@
     </div>
 
     <div class="form-section">
+      <!-- disabled su button aggiunto dopo presenzatione avendo notato che mancava -->
       <button
         mat-raised-button
         routerLink="/questions"
         color="primary"
         (click)="getCategories()"
+        [disabled]="!(idCategory && selectedDifficulty)"
       >
         Start
       </button>
@@ -37,6 +39,4 @@
   <select *ngFor="let category of apiData; index as i" name="Category" id="">
     <option value="">{{ category.trivia_categories[0].name }}</option>
   </select>
-
- 
 </div>
