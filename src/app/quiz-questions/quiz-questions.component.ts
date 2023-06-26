@@ -20,7 +20,6 @@ export class QuizQuestionsComponent implements OnInit {
   }
 
   getData(): void {
-    // chiamata http con url che mi da domande e risposta - con subscribe accedo a dati dell'url --> data sono i dati estratti dall'url
     this.http.get<any>(this.apiService.getUrlFinale()).subscribe((data) => {
       // trivia sarà = a una copia di data (con tutti i dati dell url)
       // element --> elementi di data
@@ -32,7 +31,7 @@ export class QuizQuestionsComponent implements OnInit {
         t.category = element.category;
         t.difficulty = element.difficulty;
         t.question = element.question;
-        // array per risposte
+
         const answers: any = [];
 
         // Creazione dell'oggetto Answer per la risposta corretta
@@ -42,8 +41,7 @@ export class QuizQuestionsComponent implements OnInit {
         answer1.selected = false;
         answers.push(answer1);
 
-        // Per ogni risposta errata, viene creato un nuovo oggetto Answer,
-        // false per indicare che è una risposta errata o che non è stata selezionata.
+        // Per ogni risposta errata, viene creato un nuovo oggetto Answer
         element.incorrect_answers.forEach((x: any) => {
           const answer2 = new Answer();
           answer2.text = x;
@@ -78,7 +76,7 @@ export class QuizQuestionsComponent implements OnInit {
   }
 
   //al click fa il calcolo delle risposte corrette
-  //in rosso quelle errate in verde quelle
+
   calculateResult(): void {
     let correctCount = 0;
     this.trivias.forEach((trivia: any) => {
@@ -95,7 +93,7 @@ export class QuizQuestionsComponent implements OnInit {
     this.selectedAnswersColor(); // Evidenzia le risposte selezionate
   }
 
-  // Per Submit -corrette e non
+  // Per Submit - cambio colore corrette e errate
   selectedAnswersColor(): void {
     this.trivias.forEach((trivia: any) => {
       trivia.answers.forEach((answer: any) => {
@@ -112,7 +110,7 @@ export class QuizQuestionsComponent implements OnInit {
     });
   }
 
-  // sotto questions, bottoni answers random
+  // answers random
   shuffleAnswers(trivia: any): void {
     trivia.answers = trivia.answers.sort(() => Math.random() - 0.5);
   }
