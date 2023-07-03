@@ -2,7 +2,7 @@
 
 👩🏻‍💻 Per vedere il sito --> https://angularquizapp.vercel.app/quiz-select
 
-Collab --> 👩🏻‍💻 elec93 
+👥 Progetto in team --> elec93 🤝
 
 🔥Realizzato usando Typescript, Angular, Angular Material e trivia API .
 
